@@ -1,24 +1,39 @@
 #!/bin/zsh
 
-template='
-\\documentclass{article}
+template='\\documentclass{article}
+\\usepackage{amsmath}
+\\usepackage{amssymb}
+\\usepackage{graphicx}
 \\usepackage{geometry}
-\\usepackage{textgreek} 
-\\usepackage[hidelinks]{hyperref}
 
-% Config
+% config
 \\allowdisplaybreaks
 \\setlength{\parindent}{0em}
-\\graphicspath{{./figures/}}
+\\graphicspath{./figures/}
 
-\\title{}
-\\author{}
+\\title{Title}
+\\author{Authoer}
 \\date{}
 
 \\begin{document}
 \\maketitle
 
+Lorum ipsum shit
+
 \\end{document}'
 
-echo $template >> "$1.tex"
-mkdir figures
+if [ -z $1 ]
+then
+    if [ -f "notes.tex" ]
+    then
+        echo "notes.tex already exists"
+    else
+        echo $template >> "notes.tex"
+        mvim "notes.tex"
+        mkdir figures
+    fi
+else
+    echo $template >> "$1.tex"
+    mvim "$1.tex"
+    mkdir figures
+fi
