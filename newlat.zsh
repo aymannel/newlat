@@ -11,8 +11,8 @@ template='\\documentclass{article}
 \\setlength{\parindent}{0em}
 \\graphicspath{./figures/}
 
-\\title{Title}
-\\author{Authoer}
+\\title{}
+\\author{}
 \\date{}
 
 \\begin{document}
